@@ -1,5 +1,6 @@
 // ===== VRAGEN =====
-let vragen = [
+let vragen = 
+[
     {
         vraag: "Wat is 2 + 2?",
         antwoorden: ["3", "4", "5", "6"],
@@ -15,40 +16,63 @@ let vragen = [
 // ===== VARIABELEN =====
 let huidigeVraag = 0;
 
-
 // ===== START KNOP =====
-document.getElementById("start").onclick = function () {
+document.getElementById("start").onclick = function () 
+{
     huidigeVraag = 0;
     toonVraag();
 };
 
-
 // ===== VRAAG TONEN =====
-function toonVraag() {
+function toonVraag() 
+{
 
     let vraagElement = document.getElementById("vraag");
     let antwoordenDiv = document.getElementById("antwoorden");
+    let feedback = document.getElementById("feedback");
 
-    // TODO: vraag tonen
-    // TODO: antwoorden genereren (buttons!)
+    // vraag tonen
+    vraagElement.innerText = vragen[huidigeVraag].vraag;
 
+    // oude antwoorden leegmaken
+    antwoordenDiv.innerHTML = "";
+    feedback.innerText = "";
+
+    // antwoorden genereren (buttons)
+    vragen[huidigeVraag].antwoorden.forEach(function (antwoord, index) {
+        let knop = document.createElement("button");
+        knop.innerText = antwoord;
+
+        knop.onclick = function () 
+        {
+            controleerAntwoord(index);
+        };
+
+        antwoordenDiv.appendChild(knop);
+    });
+
+    // volgende knop uitzetten
+    document.getElementById("volgende").disabled = true;
 }
 
-
 // ===== ANTWOORD CONTROLEREN =====
-function controleerAntwoord(index) {
+function controleerAntwoord(index) 
+{
 
     let feedback = document.getElementById("feedback");
 
-    // TODO: controleer of antwoord juist is
-    // TODO: feedback tonen
+    if (index === vragen[huidigeVraag].correct) {
+        feedback.innerText = "Juist!";
+    } else {
+        feedback.innerText = "Fout!";
+    }
 
     document.getElementById("volgende").disabled = false;
 }
 
-
 // ===== VOLGENDE VRAAG =====
-document.getElementById("volgende").onclick = function () {
+document.getElementById("volgende").onclick = function ()
+{
 
     huidigeVraag++;
 
@@ -57,5 +81,5 @@ document.getElementById("volgende").onclick = function () {
         huidigeVraag = 0;
     }
 
-    // TODO: nieuwe vraag tonen
+    toonVraag();
 };

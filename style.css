@@ -1,29 +1,41 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f2f5;
+    font-family: 'Inter', Arial, sans-serif;
+    background: linear-gradient(135deg, #d3d3d3, #f0f0f0);
     text-align: center;
 }
 
+/* Container */
 #quiz-container {
     background: white;
     width: 400px;
     margin: 50px auto;
-    padding: 20px;
-    border-radius: 10px;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
 }
 
+/* Knoppen */
 button {
     display: block;
     width: 100%;
     margin: 10px 0;
-    padding: 10px;
+    padding: 12px;
     cursor: pointer;
+    border: none;
+    border-radius: 12px;
+    background-color: #f5f5f5;
+    transition: all 0.2s ease;
+    font-size: 15px;
 }
 
 button:hover {
-    background-color: #ddd;
+    background-color: #dcdcdc;
+    transform: scale(1.02);
 }
 
+/* Feedback */
 #feedback {
-    font-weight: bold;
+    font-weight: 600;
+    margin-top: 15px;
+    font-size: 18px;
 }
